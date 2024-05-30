@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aletcareaccueil</title>
+    <link rel="stylesheet" href="/style.css"/>
+    <link rel="shortcut icon" href="/Alet_blue_blue.png" type="image/x-icon">
+     <script src="https://cdn.tailwindcss.com"></script>
+     <script src="index.js" defer></script>
+
+</head>
+<body>
+    <!-- navbar -->
+  <nav>
+      <div class="logo">
+        <a href="/"><img src="/alet_white-01.png" alt="" height="100px" width="50px"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="/articles">Articles</a></li>
+        <li><a href="/psy">Psychologues </a></li>
+        <li><a href="#">A propos</a></li>
+        <li><a href="/inscription">S'enregistrer</a></li>
+        <li><a href="/connexion">Se connecter</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+    <!-- formulaire de rdv -->
+    <!-- component -->
+<div class="bg-gradient-to-b from-black to-gray-700 py-5 px-4">
+    <h1 class="text-center text-white py-5 text-2xl uppercase font-bold">Prenez Rendez-Vous</h1>
+    <form method="post" action="/patients/rdv" class="flex flex-col gap-3 max-w-sm mx-auto bg-gradient-to-r p-5 from-purple-500 to-red-300 shadow-2xl shdow-gray-400/50 rounded-xl">
+        <input type="text" placeholder="Entrer votre nom" name="name" class="w-full outline-none rounded-lg py-1 px-2 bg-transparent border-1 border"/>
+        <input type="texte" placeholder="Entrer la raison de votre rdv" name="libelle" class="w-full outline-none py-1 px-2 rounded-lg border-1 border bg-transparent"/> 
+        <input type="date" placeholder="choisissez une date" class="w-full outline-none py-1 px-2 rounded-lg border-1 border bg-transparent"/>
+        <lablel type="texte" placeholder="Entrer le nom du psychologue choisi" name="psy" class="w-full outline-none py-1 px-2 rounded-lg border-1 border bg-transparent">Selectionner un psychologue</lablel> 
+        <select name="'psy" class="w-full outline-none py-1 px-2 rounded-lg border-1 border bg-transparent"> 
+          <option name="'psy" class="w-full outline-none py-1 px-2 rounded-lg border-1 border bg-transparent"> </option>
+        </select>
+        <!-- <input type="texte" placeholder="Entrer le nom du psy" name="psychologue" class="w-full outline-none py-1 px-2 rounded-lg border-1 border bg-transparent"/> -->
+        <!-- <textarea class="text-gray-400 outline-none bg-transparent border-1 border" rows="3" cols="50"> vous pouvez écrire ici...</textarea> -->
+        <button type="submit" class="border border-1 py-1 px-2 border-gray-200 w-1/3 mx-auto text-white rounded-lg py-1 hover:bg-red-300 ">Envoyer</button>
+    </form>
+</div>
+</body>
+</html>

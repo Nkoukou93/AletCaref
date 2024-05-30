@@ -1,0 +1,312 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+
+}
+/* nav-bar */
+  nav {
+    background-color: #1fa8f6;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+   .logo {
+    font-size: 24px;
+    height: 50px;
+  } 
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    padding: 0 10px;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .line1, .line2, .line3 {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+  }
+
+
+
+  
+  /* Media Query for responsiveness */
+  @media only screen and (max-width: 700px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      position: absolute;
+      top: 70px;
+      background-color: #333;
+      left: 0;
+      transition: all 0.5s ease;
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  
+    .nav-links li {
+      padding: 10px 0;
+    }
+  
+    .burger {
+      display: flex;
+    }
+  }
+
+
+
+.article-section {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  /* margin: 0 auto; */
+  padding: 20px;
+}
+
+.article {
+  margin-bottom: 30px;
+}
+
+.article img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.article h3 {
+  font-size: 1.5rem;
+}
+
+.article p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .article-section {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article img {
+    margin-bottom: 0;
+  }
+
+  .article h3 {
+    font-size: 1.2rem;
+  }
+
+  .article p {
+    font-size: 0.9rem;
+  }
+}
+
+
+.faq-section {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.faq-item {
+  margin-bottom: 30px;
+}
+
+.faq-item h3 {
+  font-size: 1.5rem;
+}
+
+.faq-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.contact-info,
+.social-media,
+.menu,
+.legal {
+    margin-bottom: 20px;
+}
+
+.contact-info h3,
+.social-media h3,
+.menu h3,
+.legal h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.contact-info p,
+.social-media ul,
+.menu ul,
+.legal p {
+    margin: 5px 0;
+}
+
+.social-media ul,
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.social-media ul li,
+.menu ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.social-media ul li:last-child,
+.menu ul li:last-child {
+    margin-right: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    Add to your stylesheet
+
+.bg-layers {
+    -webkit-animation: filter-animation 4s infinite;
+    animation: filter-animation 4s infinite;
+}
+
+.bg-scale {
+    -webkit-animation: filter-animation 8s infinite;
+    animation: filter-scale 8s infinite;
+}
+  
+@-webkit-keyframes filter-animation {
+    0% {
+      -webkit-filter: hue-rotate(0deg);
+    }
+    50% {
+      -webkit-filter: hue-rotate(45deg);
+    }
+    
+    100% {
+      -webkit-filter: hue-rotate(0deg);
+    }
+}
+  
+@keyframes filter-animation {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    50% {
+      filter: hue-rotate(45deg);
+    }
+    100% {
+      filter: hue-rotate(0deg);
+    }
+}
+
+@keyframes filter-scale {
+    0% {
+      transform:scale(1);
+    }
+    50% {
+      transform:scale(1.4);
+    }
+    100% {
+        transform:scale(.8);
+    }
+}
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    width: calc(33.33% - 10px);
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 10px);
+    }
+}
+.container{
+  display: flex;
+  justify-content: space-around;
+}
+.card{
+  background-color: #1fa8f6;
+  position: relative;
+  top: 100px;
+  left: 100px;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  border-radius: 5%;
+}
+
+.card img {
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+

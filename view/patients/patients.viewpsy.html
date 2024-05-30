@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aletcareaccueil</title>
+    <link rel="stylesheet" href="/style.css"/>
+    <link rel="shortcut icon" href="/Alet_blue_blue.png" type="image/x-icon">
+     <script src="https://cdn.tailwindcss.com"></script>
+     <script src="index.js" defer></script>
+
+</head>
+<body>
+    <!-- navbar -->
+  <nav>
+      <div class="logo">
+        <a href="http://127.0.0.1:5000/index.html"><img src="/alet_white-01.png" alt="" height="100px" width="50px"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="/articles">Articles</a></li>
+        <li><a href="/psy">Psychologues </a></li>
+        <li><a href="#">A propos</a></li>
+        <li><a href="/inscription">S'enregistrer</a></li>
+        <li><a href="/connexion">Se connecter</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+    <!-- navbar -->
+
+    <!-- Afficher les psy  -->
+
+     <div id="psy-container" class="container"></div>
+
+     <script>
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const psyContainer = document.getElementById('psy-container');
+
+    function fetchPsyData() {
+        fetch('http://localhost:5000/psy/allpsy')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(psy => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+                    
+                     const img = document.createElement('img');
+                img.src = `/${psy.image}`;
+
+                img.alt = psy.name;
+                    const name = document.createElement('h2');
+                    name.textContent = psy.name;
+
+                    const specialty = document.createElement('p');
+                    specialty.textContent = psy.specialite;
+
+                    const description = document.createElement('p'); 
+                    description.textContent = psy.description; 
+
+                    const contactBtn = document.createElement('button');
+                    contactBtn.classList.add('btn');
+                    contactBtn.textContent = 'Contactez';
+                    contactBtn.addEventListener('click', () => {
+                        // Code pour contacter le psy
+                        console.log('Contactez le psy:', psy.name);
+                    });
+
+                    card.appendChild(img);
+                    card.appendChild(name);
+                    card.appendChild(specialty);
+                    card.appendChild(description); // Ajoutez l'élément de description à la carte
+                    card.appendChild(contactBtn);
+
+                    psyContainer.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Erreur lors de la récupération des données:', error));
+    }
+
+    // Charger les données initiales lors du chargement de la page
+    fetchPsyData();
+
+    // Rafraîchir les données toutes les X secondes
+    // setInterval(fetchPsyData, 5000); // Changez 5000 à la durée de rafraîchissement souhaitée en millisecondes
+});
+
+
+    </script>
+</body>
+</html>
+
+   

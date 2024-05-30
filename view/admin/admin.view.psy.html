@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagedeconnexion</title>
+    <link rel="stylesheet" href="/style.css">
+    <!-- <script src="/index.js" defer></script> -->
+    <link rel="shortcut icon" href="public/alet_svg-01.svg" type="image/x-icon">
+     <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- navbar -->
+  <nav>
+      <div class="logo">
+        <a href="/"><img src="/alet_white-01.png" alt="" height="100px" width="50px"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Accueil</a></li>
+        <!-- <li><a href="">Articles</a></li> -->
+        
+        <li><a href="/admin/login">Dashboard</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+
+    <!-- end navbar -->
+    <!-- afficher les psy -->
+    <h1>Tableau de bord</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Approuver</th>
+                <th>Rejeter</th>
+                
+            </tr>
+        </thead>
+        <tbody id="psychologues-table"></tbody>
+    </table>
+
+    <div id="details"></div>
+    </body>
+    <script>
+        
+async function fetchPsychologues() {
+            const response = await fetch('/admin/findallpsy');
+            const data = await response.json();
+            return data;
+        }
+
+        async function displayPsychologues() {
+            const psychologues = await fetchPsychologues();
+
+            const tableBody = document.getElementById('psychologues-table');
+            tableBody.innerHTML = '';
+
+            psychologues.forEach(psy => {
+                console.log(psychologues);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+
+                    <td><img src="${psy.image}" alt="Image de ${psy.name}" style="width: 100px;"></td>
+                    <td>${psy.name}</td>
+                    <td>${psy.email}</td>
+                    <td>${psy.statut}</td>
+                    <td><a href="/admin/admin/${psy._id}">Approuver</a></td>
+                <td><a href="/admin/supprimer/${psy._id}">Rejeter</button></a></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        //fonction pour approuver un psy
+//        async function approvePsy(psyId) {
+//     try {
+//         const response = await fetch(`/admin/approvepsy/${psyId}`, {
+//             method: "PUT",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             }
+//         });
+
+//         if (!response.ok) {
+//             throw new Error("Erreur lors de l'approbation du psychologue");
+//         }
+
+//         // Rafraîchir la liste des psychologues après l'approbation
+//         displayPsychologues();
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
+        async function rejectPsy(psyId) {
+            try{
+                const response = await fetch(`/admin/suprimmerpsy/${psyId}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+    
+                if(!response.ok){
+                    throw new Error("Erreur lors de la suppression du psy");
+                }
+                document.location.replace('/admin/allpsy');
+            }
+            
+            catch(err){
+                alert(err);
+            }
+                    }
+            //fonction pour afficher les  images au lien des liens
+
+            function showImage(psyId) {
+                document.location.replace(`/admin/showimage/${psyId}`);
+
+            }
+
+                
+
+        // Au chargement de la page, afficher les psychologues
+        displayPsychologues();
+    
+    
+    </script>
+    </html>
+    
